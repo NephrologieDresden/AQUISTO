@@ -1,0 +1,3 @@
+Labmember;Experiment;Staining;Type.of.staining;Counterstaining;Organ;Major.tissue.compartments;Tiles;Minor.tissue.compartments;Crop.minor.tissue.compartments;Marker.1;Marker.2;Marker.3;Marker.4;Marker.5;Pseudocolour.1;Pseudocolour.2;Pseudocolour.3;Pseudocolour.4;Pseudocolour.5
+Friederike;Test;PAS;PAS;Hematoxylin;Kidney;Medulla, Cortex;5;Glomeruli;YES;PAS;;;;;;;;;
+Friederike;Test;IF;Fluorescence;DAPI;Kidney;Medulla, Cortex;5;Glomeruli;YES;Renin;tdT;HMB;DAPI;;Magenta;Red;Green;Cyan;
