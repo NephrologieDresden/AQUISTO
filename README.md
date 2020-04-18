@@ -7,3 +7,5 @@ FIJI-macros and R-Scripts for automatic quantification of whole histological sec
 To get started: Download the required software (as described in the manual) and the folders "Registration Tables" and "AQUISTO_Macros", then execute the file "AQUISTO.R" located in "AQUISTO_Macros/R" and source the script.
 
 Kessel, F. et al. New automatic quantification method of immunofluorescence and histochemistry in whole histological sections. Cell Signal 62, 109335, doi:10.1016/j.cellsig.2019.05.020 (2019).
+
+For questions, please contact: friederike.kessel@ukdd.de
