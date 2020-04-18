@@ -257,4 +257,4 @@ function process_image(){
 }
 
 
-//run("Quit");
+run("Quit");

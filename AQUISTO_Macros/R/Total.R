@@ -76,11 +76,20 @@ select_substep<-function(){
   }
   if(stepx=="Analysis"){
     substep<-select.list(c("Standard Analysis",
-                           "Reset parameters",
                            paste("Back to", stepx),
                            "Cancel"), graphics = T)
   }
 
+  if(stepx=="Crop minor tissues"){
+    substep<-select.list(c("Crop minor tissues",
+                           paste("Back to", stepx),
+                           "Cancel"), graphics = T)
+  }
+  if(stepx=="User Manual"){
+    substep<-select.list(c("User Manual",
+                           paste("Back to", stepx),
+                           "Cancel"), graphics = T)
+  }
   
   if(stepx=="Cancel"){
     substep<-"Cancel"
@@ -273,7 +282,7 @@ total_program<-function(){
             }
           }else{
             wd<-gsub("/", "\\\\", getwd())
-            system(paste0(dirfiji," -macro ",dirsource,"ImageJ_Macro/Images.ijm ", wd, "\\",stainings[a], "*", 1, "*", 2, "*",3, "*", 5))
+            system(paste0(dirfiji," -macro ",dirsource,"ImageJ_Macro/Images.ijm ",  dirdata, "*",wd, "\\",stainings[a], "*", 1, "*", 2, "*",3, "*", 5))
           }
         }else{
           wd<-gsub("/", "\\\\", getwd())
@@ -445,20 +454,28 @@ total_program<-function(){
     
     source(paste0(dirsource,"R/Slidescan_Analysis.R"))
   }
+  
+
+# Crop minor tissues ------------------------------------------------------
+  if(startx=="START: Crop minor tissues"){
+    setwd(choose.dir(default=getwd(), "Select your EXPERIMENT folder"))
     
+    system(paste0(dirfiji," -macro ",dirsource,"ImageJ_Macro/Crop_minor_tissues.ijm ", getwd()))
+  }
 }
+
 
 # execute -----------------------------------------------------------------
 
 total_selection()
 total_program()
 if(stepx=="User Manual"){
-  file.show(paste0(dirsource, "Manual.doc"))
+  file.show(paste0(dirdata, "Manual.pdf"))
 }
-while(substep!="Cancel"){
-  while(stepx!="Cancel"){
-    total_selection()
-    total_program()
-    graphics.off()
-  }
+while(substep!="Cancel"&stepx!="Cancel"&startx!="Cancel"){
+  total_selection()
+  total_program()
+  graphics.off()
 }
+
+

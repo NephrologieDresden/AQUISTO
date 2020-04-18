@@ -1,16 +1,12 @@
-# INSTRUCTIONS: -----------------------------------------------------------
-# a) set the working directory by selection the "..." at the bottom right of the screen, choosing your experiment folder and pressing okay
-#     then press the "More" button and select "Set as working directory"
-# b) Make sure you have the table Groups.csv filled out before starting the analysis
-# c) Start the program by running it from source with echo (Ctrl-Shift-Enter) or by clicking the little arrow on the right next to source and
-#     select "Source with Echo"
-# d) Define your group order (wait for the line in the Console, enter the numbers of the groups in the order you want for the graphs, press enter and confirm
-#     with "y"+Enter)
-# e) Setting of the parameters:
-#     Area: recommended 6-45 µm²
-#     Circularity: recommended 0.5-1
-#     marker coverage and intensity depending on the staining intensity and type of staining
-# f) If you want to change the settings/parameters: Delete the File "Parameters.csv" and run the program again or change the values in the table
+## Automatic quantification of whole histological sections AQUISTO
+#   programmed by Friederike Kessel (2019) in the Department of Internal Medicine III,
+#   Workgroup of Experimental Nephrology AG Hugo
+#   Carl Gustav Carus University Dresden
+#   EMail: friederike.kessel@ukdd.de
+
+#   cite the following publication for reference
+#   "New automatic quantification method of immunofluorescence and histochemistry in whole histological sections."
+#   doi: 10.1016/j.cellsig.2019.05.020. [Epub ahead of print], Cellular Signaling 2019
 
 # General Settings --------------------------------------------------------
 wd<-getwd()
@@ -428,15 +424,9 @@ parameters<-function(){
     minmarkinput<-as.numeric(minmarkinput)
     minmark<-c(minmark,minmarkinput)
   }
-  for(a in 1:length(mark)){
-    minmarkinput<-readline(prompt=paste("Minimum",mark[a],"Intensity (0...65535): "))
-    minmarkinput<-as.numeric(minmarkinput)
-    minmark<-c(minmark,minmarkinput)
-  }
   parameters<-data.frame(c("Minimum nuclear area [µm²]","Minimum nuclear area [µm²]",
                            "Minimum Circularity","Maximum Circularity",
-                           paste("Minimum",mark, "Coverage [%]"),
-                          paste("Minimum",mark, "Intensity")),
+                           paste("Minimum",mark, "Coverage [%]")),
                          c(minarea,maxarea,mincirc,maxcirc,minmark[2:length(minmark)]))
   write.table(parameters,file="Analysis/Parameters.csv",sep=";",row.names = F,col.names = F)
 }

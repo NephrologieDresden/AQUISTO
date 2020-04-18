@@ -2,7 +2,8 @@
 //Friederike Kessel (2019) as part of "AQUISTO"
 
 //Setting the experiment folder
-path=getDirectory("Select the experiment folder");
+path=getArgument();
+path=path+"\\";
 close("*");
 if(roiManager("count")>0){roiManager("Deselect"); roiManager("Delete");}
 

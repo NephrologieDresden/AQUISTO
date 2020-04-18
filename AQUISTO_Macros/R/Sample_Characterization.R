@@ -76,8 +76,8 @@ for(i in 1:length(labmember)){
     stainings<-list.dirs(paste0("Experiments/",labmember[i],"/",experiment[j]), full.names = F, recursive = F)
     for(k in 1:length(stainings)){
       ##only run if it hasnt run before
-      if(!file.exists(paste0(getwd(),"Experiments/",labmember[i],"/",experiment[j],"/",stainings[k], "/Analysis"))){
-      if(file.exists(paste0(getwd(),"Experiments/",labmember[i],"/",experiment[j],"/",stainings[k], "/Results"))){
+      if(!file.exists(paste0("Experiments/",labmember[i],"/",experiment[j],"/",stainings[k], "/Analysis"))){
+      if(file.exists(paste0("Experiments/",labmember[i],"/",experiment[j],"/",stainings[k], "/Results"))){
         ###Get row for specific staining from table
         c2<-subset(df2,df2$Labmember==labmember[i]&df2$Experiment==experiment[j]&df2$Staining==stainings[k])
         c1<-which(df2$Labmember==labmember[i]&df2$Experiment==experiment[j]&df2$Staining==stainings[k])
